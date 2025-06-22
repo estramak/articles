@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="copy.css">
+    <title>Document</title>
+</head>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabase = createClient(
+        'https://shrkffkywalklzhtbaya.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA'
+    );
+    async function loadMonologueById(uuid) {
+    const { data, error } = await supabase
+        .from('gallery')
+        .select('*')
+        .eq('id', uuid)  // assuming 'id' is your UUID column
+        .single();       // ensures only one row is expected
+
+    if (error) {
+        console.error('Error fetching monologue:', error);
+        return;
+    }
+
+    if (!data) return;
+
+    // Set hero background image
+    const heroHeader = document.getElementById('monologue-hero');
+    heroHeader.style.backgroundImage = `url('${data.image_url}')`;
+
+    // Set monologue title
+    const titleElement = document.getElementById('monologue-title');
+    titleElement.textContent = data.title || 'Untitled Monologue';
+    }
+
+    // Usage example:
+    loadMonologueById('081e383a-9c61-4b83-ba49-77f15fcd1bca');
+</script>
+<body>
+
+    <header class="hero" id="monologue-hero">
+        <!--full navbar-->
+        <nav class="navbar">
+            <a href="#">
+                <div class="left-section">
+                        <div class="logo">
+                            <img src="Copy Images/file.png" alt="Musings & Media Logo" style="height: 100px;">
+                        </div>
+                        <div class="header">
+                            <h1>
+                                Musings<br>&<br>Media
+                            </h1>
+                        </div>
+                </div>
+            </a>
+            <div class="center-section">
+                <ul>
+                    <li><a href="#">HUB</a></li>
+                    <li><a href="#">MUSINGS</a></li>
+                    <li><a href="#">MEDIA</a></li>
+                    <li><a href="#">SHRINES</a></li>
+                </ul>
+            </div>
+
+            <div class="right-section">
+                <div class="guestbook">
+                    <a href="https://pub42.bravenet.com/guestbook/3567767585/" target="_blank"><img src="Copy Images/guestbook.gif" alt="Come sign my guestbook!"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1 id="monologue-title">Loading...</h1>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <article>
+            <h2>Second Heading</h2>
+            <p>
+            Text here
+            </p>
+        </article>
+        <hr class="divider">
+        
+    </main>
+</body>
+</html>
+
+<!-- 
+
+SIDENOTE CREATION C&P
+
+<span class="sidenote-number">
+    <small class="sidenote">
+        sidenote content number one
+    </small>
+</span>
+
+-->
+
+
+<!--
+
+IMAGE INSIDE TEXT, PUT INSIDE P DIVIDER
+
+<img src="" style="height: 150px; padding: 15px; float: [left/right];">
+-->
+
+<!--
+PARAGRAPH BREAK: <br>
+-->
