@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="peters.css">
+    <title>Document</title>
+</head>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabase = createClient(
+        'https://shrkffkywalklzhtbaya.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNocmtmZmt5d2Fsa2x6aHRiYXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwMTUzMjIsImV4cCI6MjA2NTU5MTMyMn0.O2Kdi2OBvyWi8wdBx0j-BSzuW89Zpqsa4uEPjxVPhEA'
+    );
+    async function loadMonologueById(uuid) {
+    const { data, error } = await supabase
+        .from('gallery')
+        .select('*')
+        .eq('id', uuid)  // assuming 'id' is your UUID column
+        .single();       // ensures only one row is expected
+
+    if (error) {
+        console.error('Error fetching monologue:', error);
+        return;
+    }
+
+    if (!data) return;
+
+    // Set hero background image
+    const heroHeader = document.getElementById('monologue-hero');
+    heroHeader.style.backgroundImage = `url('${data.image_url}')`;
+
+    // Set monologue title
+    const titleElement = document.getElementById('monologue-title');
+    titleElement.textContent = data.title || 'Untitled Monologue';
+    }
+
+    // Usage example:
+    loadMonologueById('074b783c-72f8-460b-9be4-eb7d68f03b19');
+</script>
+<body>
+
+    <header class="hero" id="monologue-hero">
+        <!--full navbar-->
+        <nav class="navbar">
+            <a href="#">
+                <div class="left-section">
+                        <div class="logo">
+                            <img src="Copy Images/file.png" alt="Musings & Media Logo" style="height: 100px;">
+                        </div>
+                        <div class="header">
+                            <h1>
+                                Musings<br>&<br>Media
+                            </h1>
+                        </div>
+                </div>
+            </a>
+            <div class="center-section">
+                <ul>
+                    <li><a href="#">HUB</a></li>
+                    <li><a href="#">MUSINGS</a></li>
+                    <li><a href="#">MEDIA</a></li>
+                    <li><a href="#">SHRINES</a></li>
+                </ul>
+            </div>
+
+            <div class="right-section">
+                <div class="guestbook">
+                    <a href="https://pub42.bravenet.com/guestbook/3567767585/" target="_blank"><img src="Copy Images/guestbook.gif" alt="Come sign my guestbook!"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1 id="monologue-title">Loading...</h1>
+        </div>
+    </header>
+    <main>
+        <article class="main-content">
+            <h2>Hidden History, the Start of an Obsession, and A Welcome Message<br><hr class="divider"></h2>
+            <p>
+                I had never visited an art museum until last year - The Frye Museum in the First Hill of Seattle. Tucked away on a skinny road with the classic problem of street-side parking (if you could find any), and not knowing what I was walking into. I had been interested in art before, but never fully dived into it to learn the analysis and contextual techniques you can practice on it. Finding unique prints in weekend farmers markets, but the detail and work that went into them slipped past my understanding. Walking into this museum would open a deep passion I had never come across yet in myself. You can imagine my surprise when I happened across a series of a local artist that brought me to tears.
+            </p>
+            <figure class="float-right">
+                <img src="Copy Images/PXL_20240825_190449806.jpg" alt="picture of gallery in Frye Art Museum">
+                <figcaption>gallery in Frye Art Museum</figcaption>
+            </figure>
+            <p>
+                On a surface level, it shouldn’t have. White lines on a canvas shouldn’t evoke such a deep feeling, I felt so silly. As I read the plaques and walked down the wall these 60x48 canvases lined through, I felt so drawn to the meticulous detail this artist had put into them. I could have stared at each white ink line for days if I allowed myself to, and I wanted nothing more than to burn the image into my mind for years to come. Something about them truly spoke to me - these massive depictions of a lost world, and I finally understood the want for people to spend thousands of dollars just to have seemingly arbitrary pieces in their homes. This realization is the reason behind this makeshift blog.
+                <br>
+                I found a love for web development a few years ago, but never got passion enough for anything else to create something for me, and not a client. What better way to start this project than with the start of my joy in art? This and future articles will discuss art analysis, contextual history and beliefs of the artists, my interpretation and exploration of creations, and the messages I pull from them. While art is not the only passion I will be discussing, this will be the main muse. Without further ado, let’s get into Mary Ann Peter’s series <em>this trembling turf (the shallows)</em>.
+            </p>
+            <hr class="divider">
+            <p>
+                <em>This trembling turf (the shallows)</em> (2018) uses white ink on clay board as a way to tell the story of the Earth. Specifically, hidden narratives that only She remembers. Mary Ann is from a family of Lebanese immigrants, leaving her in pursuit of knowledge in “migration patterns and histories that started at the turn of the twentieth century”<sup><a href="#link1"> [1] </a></sup>. This journey eventually led her to Buruit and the knowledge of the forgotten massacre. The slaughter of 1,300-3,500 Palestinians<sup><a href="#link2"> [2] </a></sup>, with no justice coming from the ones who committed it and no graves for the ones who suffered it. Except, for a rumor of a mass grave hidden beneath a golf course in Buruit. A place that only the Earth that cradles them can testify on for certain. This sentiment was the birth of <em>this trembling turf (the shallows) series</em>. Mary Ann states:
+            </p>
+            <h3>“this trembling turf is more of a global concept because every culture has hidden histories that they don't want to cope with.”</h3>
+            <p>
+                Her artwork tries to portray the heartbeat of a sonogram as it scans the Earth, pulsing at the objects buried within Her. The finding of items like the unmarked burial, like The Two Maidens of Pompeii, like all the unfound and forgotten pieces of history we will never happen across.
+                <br>
+            </p>
+            <figure class="float-left">
+                <img src="Copy Images/this trembling turf series/burst.jpeg" alt="...">
+                <figcaption>Mary Ann Peters, burst, 2018<br>white ink on clayboard</figcaption>
+            </figure>
+            <p>
+                There are 10 pieces in this series, all of them a beautiful rendition of such a striking message. One specifically stood out to me though in this series, fittingly titled <em>burst</em>. Peters did an amazing job of incorporating negative space in this piece, creating a haze and relaxed cloud of white ink outside of the focal point. A spike in energy is the main focus of this work, breaking up the hazy outer lines of noise with a jagged outburst. It reminds me almost of a high-frequency Chlandni pattern, the sharp peaks of white lines shooting towards the top of the board.
+                <br>
+                Mary Ann wondered as she created her first image, what would you see horizontally beneath the Earth? What hidden sights and history could you find if you could be part of the layers of dirt and rock? I think this image is the best depiction in her series. Especially with the start of her journey beginning with the sentiment of remembering the victims of the Sabra and Shatila massacre: the energy of lost loved ones reaching up towards remembrance.
+                <br>
+                Unfortunately, this is not an unknown concept to people today. I am writing this during the massacres of Gaza, the bombings of Iran, and the civil unrest and protests of America. Our Earth has millions of years and blood buried within her, and she will have centuries more to come. Another question was in the back of Peters' mind as she started this series – Is there a country on the planet that doesn't have the same kind of tormented past?<sup><a href="#link3"> [3] </a></sup> Our plight right now is happening worldwide, with some feeling it drastically more than others. As I searched online for articles researching the Sabra and Shatila massacre, typing the general term “forgotten massacre” brought up a jarring number of research into similar stains on our timeline. And yet, if it has been repeated time and time, why are they so forgotten? 
+            </p>
+            <h3>If the victims of these events died not for the action-changing guilt we would hold to not repeat the past, what did they die for?</h3>
+            <figure class="float-right">
+                <img src="Copy Images/this trembling turf series/hollow.jpeg" alt="...">
+                <figcaption>Mary Ann Peters, hollow, 2018<br>white ink on clayboard</figcaption>
+            </figure>
+            <p>
+                In her series, Peters included (the shallows) in reference to marshlands. Waterlogged terrain with a habit of preservation, marshes play a significant part in anthropological findings. She wanted to bring the idea of exploring into hidden meaning in a place where you can look if you truly do want to see. A common theme we all find ourselves falling into is believing the atrocities of human conditions will never fall onto our backs. That we can be disconnected from the stories of people in another country, or another group than us, and these events will never affect us personally. They’ll never make their way to our soil, to our Earth. What this series did for me, was make me question that sentiment, and made me listen and want to learn the stories of the forgotten voices.
+                <br>
+                Mary Ann Peters ended her 10-part series in 2021. Her last work of art is titled <em>this trembling turf (the hollow)</em>. All of her other pieces share a commonality of holding a pulse, holding a faint life source of the not-quite-gone capsules of time. This one is different. Almost not created, this piece is a premonition, she states "..it just lays the groundwork for what could happen in the future or all the things we don't know”. Whether that is forgotten history or the existence of us, that is up to interpretation; that is for you to research and question.
+            </p>
+        </article>
+        <div class="image-row">
+            <img src="Copy Images/this trembling turf series/02_MaryAnnPeters.jpg">
+            <img src="Copy Images/this trembling turf series/fullsizeoutput_175b.jpeg">
+            <img src="Copy Images/this trembling turf series/fullsizeoutput_1836.jpeg">
+            <img src="Copy Images/this trembling turf series/fullsizeoutput_af.jpeg">
+            <img src="Copy Images/this trembling turf series/image.jpg">
+            <img src="Copy Images/this trembling turf series/this+trembling+turf.jpg">
+            <img src="Copy Images/this trembling turf series/MAP_This+Trembling+Turf(The+Shallows).jpg">
+        </div>
+        <article class="main-content">
+            <hr class="divider">
+            <h2>Citations</h2>
+            <ul>
+                <li id="link1">[1] In the Artist’s Words: Mary Ann Peters | Frye Art Museum. (2021). Fryemuseum.org. https://fryemuseum.org/blog/in-the-artists-words-mary-ann-peters</li>
+                <li id="link2">[2] Aljazeera.net - Remembering Sabra and Shatila. (2024). Archive.org. https://web.archive.org/web/20051225181635/http://english.aljazeera.net/NR/exeres/B26B8CE1-49E1-47FF-9ED5-8E1AE1305CC4.htm</li>
+                <li id="link3">[3] Frye Art Museum. (n.d.). Mary Ann Peters – this trembling turf (the shallows). Frye Art Museum Collection. https://collection.fryemuseum.org/objects-1/info?query=Portfolios%20%3D%20%223387%22%20and%20Sort_Artist%20%3D%20%22Peters,%20Mary%20Ann%22&sort=0</li>
+                <li id="link4">Ann, M. (2025). Mary Ann Peters. Mary Ann Peters. http://www.maryann-peters.com/studio-work-1</li>
+            </ul>
+        </article>
+    </main>
+</body>
+</html>
+
+<!-- 
+
+SIDENOTE CREATION C&P
+
+<span class="sidenote-number">
+    <small class="sidenote">
+        sidenote content number one
+    </small>
+</span>
+
+-->
+
+
+<!--
+
+LEFT IMAGE
+
+<figure class="float-left">
+    <img src="..." alt="...">
+    <figcaption>...</figcaption>
+</figure>
+
+RIGHT IMAGE
+
+<figure class="float-right">
+    <img src="..." alt="...">
+    <figcaption>...</figcaption>
+</figure>
+-->
+
+<!--
+PARAGRAPH BREAK: <br>
+
+HORIZONTAL LINE: <hr class="divider">
+
+SUPERSCRIPT IN-TEXT LINK: <sup><a href="#..."> [1] </a></sup>
+in citation, put id in li tag and link id to a tag
+-->
