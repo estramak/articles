@@ -132,6 +132,7 @@ figcaption {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    background-color: rgba(236, 211, 191, 0.589);
 }
 
 /* Optional container structure for better control */
@@ -259,3 +260,4 @@ figcaption {
 
     /* --- for nth-type-child to work, all sidenotes would need to be under the same parent. JS will need to be used for sidenotes to be alterating --*/
 }
+
